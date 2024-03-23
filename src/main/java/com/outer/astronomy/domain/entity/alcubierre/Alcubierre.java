@@ -5,23 +5,23 @@ import java.util.stream.IntStream;
 import static com.outer.astronomy.domain.utils.Constants.gravitationalConstant;
 import static com.outer.astronomy.domain.utils.Constants.speedOfLight;
 
-public record Alcubierre(int gridSize) {
+public record Alcubierre(Gridsize gridSize) {
 
     public double[][][] simulate() {
 
         double[][][] spacetime = new double[100][100][100];
 
-        IntStream.range(0, gridSize)
+        IntStream.range(0, gridSize.gridSize())
                 .boxed()
-                .flatMap(i -> IntStream.range(0, gridSize)
+                .flatMap(i -> IntStream.range(0, gridSize.gridSize())
                         .boxed()
-                        .flatMap(j -> IntStream.range(0, gridSize)
+                        .flatMap(j -> IntStream.range(0, gridSize.gridSize())
                                 .boxed()
                                 .map(k -> {
-                                    double x = (i - gridSize / 2) * speedOfLight;
-                                    double y = (j - gridSize / 2) * speedOfLight;
-                                    double z = (k - gridSize / 2) * speedOfLight;
-                                    double t = (i + j + k) * speedOfLight / gridSize;
+                                    double x = (i - gridSize.gridSize() / 2) * speedOfLight;
+                                    double y = (j - gridSize.gridSize() / 2) * speedOfLight;
+                                    double z = (k - gridSize.gridSize() / 2) * speedOfLight;
+                                    double t = (i + j + k) * speedOfLight / gridSize.gridSize();
                                     Point point = new Point(x, y, z, t);
                                     return new Triplet<>(i, j, k, point);
                                 })
