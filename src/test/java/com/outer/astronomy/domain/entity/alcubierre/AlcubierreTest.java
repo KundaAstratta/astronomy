@@ -9,8 +9,9 @@ class AlcubierreTest {
     @Test
     public void testSimulate_smallGrid() {
         // Arrange
-        int gridSize = 4; // Small grid size for faster testing
-        Alcubierre alcubierre = new Alcubierre(gridSize);
+        Gridsize gridsize = new Gridsize(4);
+        // Small grid size for faster testing
+        Alcubierre alcubierre = new Alcubierre(gridsize);
 
         // Act
         double[][][] spacetime = alcubierre.simulate();
@@ -26,7 +27,7 @@ class AlcubierreTest {
         try {
             new Gridsize(invalidGridSize);
         } catch (Exception e) {
-            assertEquals(e.getMessage(), "Grid size must be less than 100");
+            assertEquals(e.getMessage(), "Grid size must be less than 100.");
         }
 
     }
@@ -38,7 +39,7 @@ class AlcubierreTest {
         try {
             new Gridsize((invalidGridSize));
         } catch (Exception e) {
-            assertEquals(e.getMessage(), "Grid size must be positive");
+            assertEquals(e.getMessage(), "Grid size must be positive.");
         }
     }
 }
