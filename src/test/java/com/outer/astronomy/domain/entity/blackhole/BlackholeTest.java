@@ -8,15 +8,15 @@ class BlackholeTest {
 
     @Test
     void getSchwarzschildRadius_OK() {
-        Features features = new Features(9e29,0,false,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),0,false,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(1336, blackhole.getSchwarzschildRadius(),1);
     }
 
     @Test
     void getSchwarzschildRadius_Mass_equal_to_zero() {
-        Features features = new Features(0,0,false,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,0,false,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
             blackhole.getSchwarzschildRadius();
         } catch(Exception e) {
@@ -26,15 +26,15 @@ class BlackholeTest {
 
     @Test
     void isTraversable_OK() {
-        Features features = new Features(9e29,1336,false,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,false,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(blackhole.isTraversable(),true);
     }
 
     @Test
     void isTraversable_Mass_equals_to_zero () {
-        Features features = new Features(0,1336,false,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,1336,false,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
             blackhole.isTraversable();
         } catch (Exception e) {
@@ -44,8 +44,8 @@ class BlackholeTest {
 
     @Test
     void isTravesable_Radius_equals_to_zero () {
-        Features features = new Features(9e29,0,false,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),0,false,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
             blackhole.isTraversable();
         } catch (Exception e) {
@@ -72,7 +72,7 @@ class BlackholeTest {
         try {
             blackhole.isTooClose(0,10,10);
         } catch (Exception e) {
-            assertEquals(e.getMessage(),"Distance must be positive");
+            assertEquals(e.getMessage(),"Distance must be positive.");
         }
     }
 
@@ -89,16 +89,16 @@ class BlackholeTest {
     @Test
     void timeToCross_Ok() {
         Blackhole blackhole = new Blackhole(null);
-        assertEquals(7.935182117278767e20,blackhole.timeToCrossApproachCalculus(10e20,20e20,1.989e30,1.989e30),0.1);
+        assertEquals(7.935182117278767*Math.pow(10,20),blackhole.timeToCrossApproachCalculus(10*Math.pow(10,20),20*Math.pow(10,20),1.989*Math.pow(10,30),1.989*Math.pow(10,30)),0.1);
     }
 
     @Test
     void timeToCross_radius_error() {
         Blackhole blackhole = new Blackhole(null);
         try {
-            blackhole.timeToCrossApproachCalculus(0,20e20,1.989e30,1.989e30);
+            blackhole.timeToCrossApproachCalculus(0,20*Math.pow(10,20),1.989*Math.pow(10,30),1.989*Math.pow(10,30));
         } catch (Exception e) {
-            assertEquals(e.getMessage(),"Radial distance must be positive");
+            assertEquals(e.getMessage(),"Radial distance must be positive.");
         }
     }
 
@@ -106,9 +106,9 @@ class BlackholeTest {
     void timeToCross_distance_error() {
         Blackhole blackhole = new Blackhole(null);
         try {
-            blackhole.timeToCrossApproachCalculus(10,10,1.989e30,1.989e30);
+            blackhole.timeToCrossApproachCalculus(10,10,1.989*Math.pow(10,30),1.989*Math.pow(10,30));
         } catch (Exception e) {
-            assertEquals(e.getMessage(),"Distance must be positive");
+            assertEquals(e.getMessage(),"Distance must be positive.");
         }
     }
 
@@ -116,7 +116,7 @@ class BlackholeTest {
     void timeToCross_mass_error() {
         Blackhole blackhole = new Blackhole(null);
         try {
-            blackhole.timeToCrossApproachCalculus(10,20,0,1.989e30);
+            blackhole.timeToCrossApproachCalculus(10,20,0,1.989*Math.pow(10,30));
         } catch (Exception e) {
             assertEquals(e.getMessage(),"Mass must be positive.");
         }
@@ -124,15 +124,15 @@ class BlackholeTest {
 
     @Test
     void eventHorizonArea_Ok() {
-        Features features = new Features(9e29,1336,true,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(blackhole.eventHorizonArea(),5613368,1);
     }
 
     @Test
     void eventHorizonArea_mass_error() {
-        Features features = new Features(0,1336,true,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,1336,true,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
             blackhole.eventHorizonArea();
         } catch (Exception e) {
@@ -142,33 +142,33 @@ class BlackholeTest {
 
     @Test
     void entopy_Ok() {
-        Features features = new Features(9e29,1336,true,5613368,0,0);
-        Blackhole blackhole = new Blackhole(features);
-        assertEquals(blackhole.entropy(features.eventHorizonArea()),1.1804488176510482E52,1);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,5613368,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
+        assertEquals(blackhole.entropy(featuresBlackhole.eventHorizonArea()),1.1804488176510484*Math.pow(10,52),0.1);
     }
 
     @Test
     void entropy_error_eventHorizonArea() {
-        Features features = new Features(9e29,1336,true,0,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,0,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
-            blackhole.entropy(features.eventHorizonArea());
+            blackhole.entropy(featuresBlackhole.eventHorizonArea());
         } catch (Exception e) {
-            assertEquals(e.getMessage(),"Event Horizon must be present");
+            assertEquals(e.getMessage(),"Event Horizon must be present.");
         }
     }
 
     @Test
     void temperature_Ok() {
-        Features features = new Features(9e29,1336,true,5613368,0,0);
-        Blackhole blackhole = new Blackhole(features);
-        assertEquals(blackhole.temperature(),8.565382520009469E-7,1);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,5613368,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
+        assertEquals(blackhole.temperature(),8.565382520009469*Math.pow(10,-7),1);
     }
 
     @Test
     void temperature_error_mass () {
-        Features features = new Features(0,1336,true,5613368,0,0);
-        Blackhole blackhole = new Blackhole(features);
+        FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,1336,true,5613368,0,0);
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
             blackhole.temperature();
         } catch (Exception e) {
