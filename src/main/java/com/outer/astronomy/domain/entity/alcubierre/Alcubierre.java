@@ -23,7 +23,7 @@ public record Alcubierre(Gridsize gridSize) {
                                     double z = (k - gridSize.gridSize() / 2) * speedOfLight;
                                     double t = (i + j + k) * speedOfLight / gridSize.gridSize();
                                     Point point = new Point(x, y, z, t);
-                                    return new Triplet<>(i, j, k, point);
+                                    return new Quadruplet<>(i, j, k, point);
                                 })
                         )
                 )

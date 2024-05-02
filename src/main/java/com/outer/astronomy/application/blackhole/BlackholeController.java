@@ -1,7 +1,8 @@
 package com.outer.astronomy.application.blackhole;
 
 import com.outer.astronomy.domain.entity.blackhole.Blackhole;
-import com.outer.astronomy.domain.entity.blackhole.Features;
+import com.outer.astronomy.domain.entity.blackhole.Chandrasekhar;
+import com.outer.astronomy.domain.entity.blackhole.FeaturesBlackhole;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -19,14 +20,14 @@ public class BlackholeController {
                tags = {"blackhole-controller"}
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = Features.class))),
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = FeaturesBlackhole.class))),
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping(value = "v1/isTraversable", produces = "application/json", consumes = "application/json")
-    public Features isTraversable(@RequestBody Features features)  {
-        Blackhole blackhole = new Blackhole(features);
-        return new Features(features.mass(), features.radius(), blackhole.isTraversable(),features.eventHorizonArea(), features.entropy(), features.temperature());
+    public FeaturesBlackhole isTraversable(@RequestBody FeaturesBlackhole featuresBlackhole)  {
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
+        return new FeaturesBlackhole(featuresBlackhole.mass(), featuresBlackhole.radius(), blackhole.isTraversable(), featuresBlackhole.eventHorizonArea(), featuresBlackhole.entropy(), featuresBlackhole.temperature());
     }
 
     @Operation(summary = "Schwarzschild radius", operationId = "getSchwarzschildRadius",
@@ -37,14 +38,14 @@ public class BlackholeController {
             tags = {"blackhole-controller"}
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = Features.class))),
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = FeaturesBlackhole.class))),
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping("v1/getSchwarzschildRadius")
-    public Features getSchwarzschildRadius(@RequestBody Features features) {
-        Blackhole blackhole = new Blackhole(features);
-        return new Features(features.mass(), blackhole.getSchwarzschildRadius(), features.isTraversable(), features.eventHorizonArea(), features.entropy(), features.temperature());
+    public FeaturesBlackhole getSchwarzschildRadius(@RequestBody FeaturesBlackhole featuresBlackhole) {
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
+        return new FeaturesBlackhole(featuresBlackhole.mass(), blackhole.getSchwarzschildRadius(), featuresBlackhole.isTraversable(), featuresBlackhole.eventHorizonArea(), featuresBlackhole.entropy(), featuresBlackhole.temperature());
     }
     @Operation(summary = "Black holes are close enough ?", operationId = "isTooClose",
             description = "Check if black holes are close enough to have a wormhole." +
@@ -52,7 +53,7 @@ public class BlackholeController {
             tags = {"blackhole-controller"}
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = Features.class))),
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = FeaturesBlackhole.class))),
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
@@ -74,7 +75,7 @@ public class BlackholeController {
             tags = {"blackhole-controller"}
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = Features.class))),
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = FeaturesBlackhole.class))),
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
@@ -92,14 +93,14 @@ public class BlackholeController {
             tags = {"blackhole-controller"}
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = Features.class))),
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = FeaturesBlackhole.class))),
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping("v1/eventHorizonArea")
-    public Features eventHorizonArea(@RequestBody Features features) {
-        Blackhole blackhole = new Blackhole(features);
-        return new Features(features.mass(), features.radius(), features.isTraversable(), blackhole.eventHorizonArea(), features.entropy(), features.temperature());
+    public FeaturesBlackhole eventHorizonArea(@RequestBody FeaturesBlackhole featuresBlackhole) {
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
+        return new FeaturesBlackhole(featuresBlackhole.mass(), featuresBlackhole.radius(), featuresBlackhole.isTraversable(), blackhole.eventHorizonArea(), featuresBlackhole.entropy(), featuresBlackhole.temperature());
     }
 
     @Operation(summary = "Entropy", operationId = "entropy",
@@ -107,14 +108,14 @@ public class BlackholeController {
             tags = {"blackhole-controller"}
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = Features.class))),
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = FeaturesBlackhole.class))),
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping("v1/entropy")
-    public Features entropy(@RequestBody Features features) {
-        Blackhole blackhole = new Blackhole(features);
-        return new Features(features.mass(), features.radius(), features.isTraversable(), features.eventHorizonArea(), blackhole.entropy(features.eventHorizonArea()), features.temperature());
+    public FeaturesBlackhole entropy(@RequestBody FeaturesBlackhole featuresBlackhole) {
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
+        return new FeaturesBlackhole(featuresBlackhole.mass(), featuresBlackhole.radius(), featuresBlackhole.isTraversable(), featuresBlackhole.eventHorizonArea(), blackhole.entropy(featuresBlackhole.eventHorizonArea()), featuresBlackhole.temperature());
     }
 
     @Operation(summary = "Temperature", operationId = "temperature",
@@ -122,14 +123,37 @@ public class BlackholeController {
             tags = {"blackhole-controller"}
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = Features.class))),
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json", schema = @Schema(implementation = FeaturesBlackhole.class))),
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping("v1/temparature")
-    public Features temperature(@RequestBody Features features) {
-        Blackhole blackhole = new Blackhole(features);
-        return new Features(features.mass(), features.radius(), features.isTraversable(),  features.eventHorizonArea(), features.entropy(),blackhole.temperature());
+    public FeaturesBlackhole temperature(@RequestBody FeaturesBlackhole featuresBlackhole) {
+        Blackhole blackhole = new Blackhole(featuresBlackhole);
+        return new FeaturesBlackhole(featuresBlackhole.mass(), featuresBlackhole.radius(), featuresBlackhole.isTraversable(),  featuresBlackhole.eventHorizonArea(), featuresBlackhole.entropy(),blackhole.temperature());
+    }
+
+
+
+    @Operation(summary = "Chandrasekhar limit equation", operationId = "chandrasekharLimit",
+            description = "Chandrasekhar limit equation calculates the maximum mass M(limit) " +
+                    "of a stable white dwarf star, above which it would collapse under its own gravity, leading to a neutron star or black hole. " +
+                    "μe is the mean molecular weight per electron and Ms is the solar mass." +
+                    "M(limit) = 1,44 x (2/μe)^2 x Ms." +
+                    "fractions (molar) -> (70% d'hélium):0.7 - (20% de carbone):0.2 -  (10% d'oxygène):0.1." +
+                    "atomic Masses -> He = 4, C=12, O=16" +
+                    "atomic Numbers -> He = 2, C=6, O=8",
+            tags = {"blackhole-controller"}
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType ="application/json")),
+            @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
+            @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
+    })
+    @PostMapping("v1/chandrasekharLimit/{fractions}/{atomicNumbers}/{atomicMasses}")
+    public double chandrasekharLimit(@PathVariable double[] fractions,@PathVariable int[] atomicNumbers, @PathVariable double[] atomicMasses) {
+        Chandrasekhar chandrasekhar = new Chandrasekhar(fractions,atomicNumbers,atomicMasses);
+        return chandrasekhar.calculateChandrasekharLimit();
     }
 
 }
