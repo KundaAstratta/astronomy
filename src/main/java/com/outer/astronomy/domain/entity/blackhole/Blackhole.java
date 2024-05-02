@@ -9,7 +9,7 @@ import static com.outer.astronomy.domain.utils.Constants.speedOfLight;
 import static com.outer.astronomy.domain.utils.Constants.BoltzmanConstant;
 import static com.outer.astronomy.domain.utils.Constants.PlanckConstant;
 
-public record Blackhole(Features features) {
+public record Blackhole(FeaturesBlackhole featuresBlackhole) {
 
     //EN
     //The Schwarzschild radius is another important radius that is related to the mass of the wormhole
@@ -18,19 +18,19 @@ public record Blackhole(Features features) {
     //beyond which nothing can escape.
     //(m)
     public double getSchwarzschildRadius() {
-        if (features.mass() <= 0) {
+        if (featuresBlackhole.mass() <= 0) {
             throw new IllegalArgumentException(Errors.MassMustBePositive);
         }
-        return 2 * features.mass() * gravitationalConstant / Math.pow(speedOfLight, 2);
+        return 2 * featuresBlackhole.mass() * gravitationalConstant / Math.pow(speedOfLight, 2);
     }
     public boolean isTraversable() {
-        if (features.mass() <= 0) {
+        if (featuresBlackhole.mass() <= 0) {
             throw new IllegalArgumentException(Errors.MassMustBePositive);
         }
-        if (features.radius() <= 0) {
+        if (featuresBlackhole.radius() <= 0) {
             throw new IllegalArgumentException(Errors.RadiusMustBePositive);
         }
-        return features.mass() < Math.pow(speedOfLight * features.radius(), 3) / (2 * gravitationalConstant);
+        return featuresBlackhole.mass() < Math.pow(speedOfLight * featuresBlackhole.radius(), 3) / (2 * gravitationalConstant);
     }
 
     //EN
@@ -98,27 +98,27 @@ public record Blackhole(Features features) {
     //EN
     //Event horizon area of a black hole (m^2)
     public double eventHorizonArea ( ) {
-        if (features.mass() <= 0) {
+        if (featuresBlackhole.mass() <= 0) {
             throw new IllegalArgumentException(Errors.MassMustBePositive);
         }
-        return 4*Math.PI*(gravitationalConstant*gravitationalConstant* features.mass()* features.mass()) / (Math.pow(speedOfLight,4));
+        return 4*Math.PI*(gravitationalConstant*gravitationalConstant* featuresBlackhole.mass()* featuresBlackhole.mass()) / (Math.pow(speedOfLight,4));
     }
 
 
     //EN
     //Entropy J/K
     public double entropy (double eventHorizonArea) {
-        if (features.eventHorizonArea() <= 0) {
+        if (featuresBlackhole.eventHorizonArea() <= 0) {
             throw new IllegalArgumentException(Errors.EventHorizonMustBePresent);
         }
         return eventHorizonArea * BoltzmanConstant * Math.pow(speedOfLight,3) /(4*PlanckConstant*gravitationalConstant);
     }
 
     public double temperature () {
-        if (features.mass() <= 0) {
+        if (featuresBlackhole.mass() <= 0) {
             throw new IllegalArgumentException(Errors.MassMustBePositive);
         }
-        return PlanckConstant * Math.pow(speedOfLight,3) /(8 * Math.PI * BoltzmanConstant * gravitationalConstant * features.mass());
+        return PlanckConstant * Math.pow(speedOfLight,3) /(8 * Math.PI * BoltzmanConstant * gravitationalConstant * featuresBlackhole.mass());
     }
 }
 
