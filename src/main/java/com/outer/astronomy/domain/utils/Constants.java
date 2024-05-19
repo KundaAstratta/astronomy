@@ -10,6 +10,7 @@ public class Constants {
 
     public static final double PlanckConstant = 6.6260701510*Math.pow(10,-34);// Constante de Planck (J s)
 
+    public static final double hbar = PlanckConstant / (2* Math.PI);
     public static final double SolarMass = 1.989 * Math.pow(10,30); // SolarMass
 
 
