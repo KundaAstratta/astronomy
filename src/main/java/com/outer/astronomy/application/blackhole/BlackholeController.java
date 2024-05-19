@@ -4,6 +4,7 @@ import com.outer.astronomy.domain.entity.blackhole.Blackhole;
 import com.outer.astronomy.domain.entity.blackhole.Chandrasekhar;
 import com.outer.astronomy.domain.entity.blackhole.FeaturesBlackhole;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -58,7 +59,9 @@ public class BlackholeController {
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping("v1/isTooClose/{distance}/{radius1}/{radius2}")
-    public boolean isTooClose(@PathVariable double distance, @PathVariable double radius1, @PathVariable double radius2) {
+    public boolean isTooClose(@Parameter(description = "distance of two blackholes") @PathVariable double distance,
+                              @Parameter(description = "radius of the first blackhole")  @PathVariable double radius1,
+                              @Parameter(description = "radius of the second blackhole") @PathVariable double radius2) {
         Blackhole blackhole = new Blackhole(null);
         return blackhole.isTooClose(distance, radius1,radius2);
     }
@@ -80,7 +83,12 @@ public class BlackholeController {
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping("v1/timeToCrossApproachCalculus/{r1}/{r2}/{mass1}/{mass2}/{radius1}/{radius2}")
-    public double timeToCrossApproachCalculus(@PathVariable double r1,@PathVariable double r2, @PathVariable double mass1, @PathVariable double mass2 , @PathVariable double radius1, @PathVariable double radius2) {
+    public double timeToCrossApproachCalculus(@Parameter(description = "initial radial distance (first blackhole)") @PathVariable double r1,
+                                              @Parameter(description = "final radial distance (second blackhole") @PathVariable double r2,
+                                              @Parameter(description = "mass of the first blackhole") @PathVariable double mass1,
+                                              @Parameter(description = "mass of the second blackhole") @PathVariable double mass2 ,
+                                              @Parameter(description = "radius of the first blackhole") @PathVariable double radius1,
+                                              @Parameter(description = "radius of the second blackhole") @PathVariable double radius2) {
         Blackhole blackhole = new Blackhole(null);
         if (blackhole.isTooClose(Math.abs(r2-r1),radius1,radius2)) {
             throw new IllegalArgumentException("Too close");
@@ -151,7 +159,9 @@ public class BlackholeController {
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
     @PostMapping("v1/chandrasekharLimit/{fractions}/{atomicNumbers}/{atomicMasses}")
-    public double chandrasekharLimit(@PathVariable double[] fractions,@PathVariable int[] atomicNumbers, @PathVariable double[] atomicMasses) {
+    public double chandrasekharLimit(@Parameter(description = "fractions in % of the each atom") @PathVariable double[] fractions,
+                                     @Parameter(description = "atomic number of each atom")  @PathVariable int[] atomicNumbers,
+                                     @Parameter(description = "atomic mass of each atom") @PathVariable double[] atomicMasses) {
         Chandrasekhar chandrasekhar = new Chandrasekhar(fractions,atomicNumbers,atomicMasses);
         return chandrasekhar.calculateChandrasekharLimit();
     }
