@@ -15,7 +15,7 @@ import static com.outer.astronomy.domain.utils.Constants.gravitationalConstant;
 @RestController
 public class RelativityController {
 
-    @Operation(summary = "Calculate Einstein Tensor Space Curvature for flat spacetime", operationId = "calculateEinsteinTensorWithFlatSpaceTime",
+    @Operation(summary = "Calculate Einstein Tensor Space Curvature for flat spacetime", operationId = "EinsteinTensorWithFlatSpaceTime",
             description = "Flat spacetime (special relativity). " +
                     "The metric tensor of flat spacetime is given by the following diagonal matrix:                 " +
                     "                {-1, 0, 0, 0},\n" +
@@ -30,8 +30,8 @@ public class RelativityController {
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
-    @PostMapping("v1/calculateEinsteinTensorWithFlatSpaceTime")
-    public double[][] calculateEinsteinTensorWithFlatSpaceTime() {
+    @PostMapping("v1/EinsteinTensorWithFlatSpaceTime")
+    public double[][] EinsteinTensorWithFlatSpaceTime() {
         double[][] metric = new double[][]{
                 {-1, 0, 0, 0},
                 {0, 1, 0, 0},
@@ -42,7 +42,7 @@ public class RelativityController {
         return relativity.simulate();
     }
 
-    @Operation(summary = "Calculate Einstein Tensor Space Curvature for Expanding Universe", operationId = "calculateEinsteinTensorWithExpandingUniverse",
+    @Operation(summary = "Calculate Einstein Tensor Space Curvature for Expanding Universe", operationId = "EinsteinTensorWithExpandingUniverse",
             description = "The Expanding Universe metric tensor in 4x4 form. " +
                     "                {-1 , 0, 0, 0},\n" +
                     "                {0, a * a, 0, 0},\n" +
@@ -69,12 +69,12 @@ public class RelativityController {
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
-    @PostMapping("v1/calculateEinsteinTensorWithExpandingUniverse/{a0}/{t0}/{t}/{radial}/{theta}")
-    public double[][] calculateEinsteinTensorWithExpandingUniverse(@Parameter(description = "The scale factor at the present epoch (current time) is a dimensionless parameter that represents the overall expansion of the universe. It is set to 1 in this code.") @PathVariable double a0,
-                                                                   @Parameter(description = "The age of the universe is the time elapsed since the Big Bang, the event that is thought to have marked the beginning of the universe. It is also measured in seconds.") @PathVariable double t0,
-                                                                   @Parameter(description = "Cosmic time is the time coordinate used in general relativity to describe the evolution of the universe. It is measured in seconds.") @PathVariable double t,
-                                                                   @Parameter(description = "Radial distance between an observer (who can be placed at any point in the universe) and any point in the universe") @PathVariable double radial,
-                                                                   @Parameter(description = "Theta is the polar angle, which is defined in the framework of spherical coordinates") @PathVariable double theta) {
+    @PostMapping("v1/EinsteinTensorWithExpandingUniverse/{a0}/{t0}/{t}/{radial}/{theta}")
+    public double[][] EinsteinTensorWithExpandingUniverse(@Parameter(description = "The scale factor at the present epoch (current time) is a dimensionless parameter that represents the overall expansion of the universe. It is set to 1 in this code.") @PathVariable double a0,
+                                                          @Parameter(description = "The age of the universe is the time elapsed since the Big Bang, the event that is thought to have marked the beginning of the universe. It is also measured in seconds.") @PathVariable double t0,
+                                                          @Parameter(description = "Cosmic time is the time coordinate used in general relativity to describe the evolution of the universe. It is measured in seconds.") @PathVariable double t,
+                                                          @Parameter(description = "Radial distance between an observer (who can be placed at any point in the universe) and any point in the universe") @PathVariable double radial,
+                                                          @Parameter(description = "Theta is the polar angle, which is defined in the framework of spherical coordinates") @PathVariable double theta) {
         double a = a0 * Math.pow((t / t0) , 2.0 / 3.0);
         double[][] metric = new double[][]{
                 {-1 , 0, 0, 0},
@@ -86,7 +86,7 @@ public class RelativityController {
         return relativity.simulate();
     }
 
-    @Operation(summary = "Calculate Einstein Tensor Space Curvature for Friedmann-Lemaître-Robertson-Walker (FLRW)", operationId = "calculateEinsteinTensorWithFLRW",
+    @Operation(summary = "Calculate Einstein Tensor Space Curvature for Friedmann-Lemaître-Robertson-Walker (FLRW)", operationId = "EinsteinTensorWithFLRW",
             description = "The FLRW spacetime metric tensor is a special case of an expanding universe, where the expansion is isotropic and homogeneous." +
                     "The FLRW metric tensor in 4x4 form. " +
                     "                {-1 , 0, 0, 0},\n" +
@@ -111,13 +111,13 @@ public class RelativityController {
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
-    @PostMapping("v1/calculateEinsteinTensorWithFLRW/{a0}/{t0}/{t}/{k}/{radial}/{theta}")
-    public double[][] calculateEinsteinTensorWithFLRW(@Parameter(description = "The scale factor at the present epoch (current time) is a dimensionless parameter that represents the overall expansion of the universe") @PathVariable double a0,
-                                                      @Parameter(description = "The age of the universe is the time elapsed since the Big Bang, the event that is thought to have marked the beginning of the universe.") @PathVariable double t0,
-                                                      @Parameter(description = "Cosmic time is the time coordinate used in general relativity to describe the evolution of the universe.") @PathVariable double t,
-                                                      @Parameter(description = "This parameter represents the spatial curvature of the universe") @PathVariable double k,
-                                                      @Parameter(description = "Radial is the radial distance") @PathVariable double radial,
-                                                      @Parameter(description = "Theta is the polar angle, which is defined in the framework of  ") @PathVariable double theta) {
+    @PostMapping("v1/EinsteinTensorWithFLRW/{a0}/{t0}/{t}/{k}/{radial}/{theta}")
+    public double[][] EinsteinTensorWithFLRW(@Parameter(description = "The scale factor at the present epoch (current time) is a dimensionless parameter that represents the overall expansion of the universe") @PathVariable double a0,
+                                             @Parameter(description = "The age of the universe is the time elapsed since the Big Bang, the event that is thought to have marked the beginning of the universe.") @PathVariable double t0,
+                                             @Parameter(description = "Cosmic time is the time coordinate used in general relativity to describe the evolution of the universe.") @PathVariable double t,
+                                             @Parameter(description = "This parameter represents the spatial curvature of the universe") @PathVariable double k,
+                                             @Parameter(description = "Radial is the radial distance") @PathVariable double radial,
+                                             @Parameter(description = "Theta is the polar angle, which is defined in the framework of  ") @PathVariable double theta) {
         double a = a0 * Math.pow((t / t0) , 2.0 / 3.0);
         double[][] metric = new double[][]{
                 {-1, 0, 0, 0},
@@ -129,7 +129,7 @@ public class RelativityController {
         return relativity.simulate();
     }
 
-    @Operation(summary = "Calculate Einstein Tensor Space Curvature for Schwarzschild Spacetime ", operationId = "calculateEinsteinTensorWithFlatSpaceTime",
+    @Operation(summary = "Calculate Einstein Tensor Space Curvature for Schwarzschild Spacetime ", operationId = "EinsteinTensorWithSchwarzschildSpaceTime",
             description = "The Schwarzschild metric tensor in 4x4 form. " +
                     "                {-1 + 2 * G* M / r, 0, 0, 0},\n" +
                     "                {0, 1/(1 - 2 * G * M / r), 0, 0},\n" +
@@ -147,10 +147,10 @@ public class RelativityController {
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
-    @PostMapping("v1/calculateEinsteinTensorWithSchwarzschildSpaceTime/{mass}/{radial}/{theta}")
-    public double[][] calculateEinsteinTensorWithSchwarzschildSpaceTime(@Parameter(description = "mass of the black hole") @PathVariable double mass,
-                                                                        @Parameter(description = "radial distance") @PathVariable double radial,
-                                                                        @Parameter(description = "theta is the colatitudinal angle ")@PathVariable double theta) {
+    @PostMapping("v1/EinsteinTensorWithSchwarzschildSpaceTime/{mass}/{radial}/{theta}")
+    public double[][] EinsteinTensorWithSchwarzschildSpaceTime(@Parameter(description = "mass of the black hole") @PathVariable double mass,
+                                                               @Parameter(description = "radial distance") @PathVariable double radial,
+                                                               @Parameter(description = "theta is the colatitudinal angle ")@PathVariable double theta) {
         double[][] metric = new double[][]{
                 {-1 + 2 * gravitationalConstant * mass / radial, 0, 0, 0},
                 {0, 1/(1 - 2 * gravitationalConstant * mass / radial), 0, 0},

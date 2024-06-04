@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AlcubierreTest {
 
     @Test
-    public void testSimulate_smallGrid() {
+    public void shouldSimulateAlcubierre_WithSmallGrid() {
         // Arrange
         Gridsize gridsize = new Gridsize(4);
         // Small grid size for faster testing
@@ -21,7 +21,7 @@ class AlcubierreTest {
         assertEquals(-0.5, spacetime[0][2][3], 0.5);
     }
     @Test
-    public void testSimulate_invalidGridSize_with_value_greater_than_100() {
+    public void shouldGridSizeError_WithValueGreaterThan100() {
 
         int invalidGridSize = 102;
         try {
@@ -33,7 +33,7 @@ class AlcubierreTest {
     }
 
     @Test
-    public void testSimulate_invalidGridSize_with_value_less_than_0() {
+    public void shouldGridSizeError_WithValueLessThan0() {
 
         int invalidGridSize = -1;
         try {

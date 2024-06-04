@@ -9,5 +9,6 @@ public class Errors {
     public static final String DistanceMustBePositive = "Distance must be positive.";
     public static final String RadialDistanceMustBePositive = "Radial distance must be positive.";
     public static final String EventHorizonMustBePresent = "Event Horizon must be present.";
+    public static final String ZSliceOutOfBounds = "zSlice out of bounds";
 
 }

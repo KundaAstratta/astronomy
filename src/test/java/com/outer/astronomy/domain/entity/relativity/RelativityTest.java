@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RelativityTest {
 
     @Test
-    void flat_spacetime () {
+    void shouldGetEinsteinTensor_WithFlatSpacetime () {
 
         double[][][][] riemann;
         double[][] metric = new double[][]{
@@ -31,7 +31,7 @@ class RelativityTest {
     }
 
     @Test
-    void Schwarzschild_metric () {
+    void shouldGetEinsteinTensor_WithSchwarzschildMetric () {
 
         double[][][][] riemann;
 
@@ -61,7 +61,7 @@ class RelativityTest {
 
 
     @Test
-    void Expanding_univese () {
+    void shouldGetEinsteinTensor_WithExpandingUnivese () {
 
         double[][][][] riemann;
 
@@ -93,7 +93,7 @@ class RelativityTest {
 
 
     @Test
-    void FLRW_model () {
+    void shouldGetEinsteinTensor_WithFLRW () {
 
         double[][][][] riemann;
 
