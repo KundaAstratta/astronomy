@@ -1,7 +1,7 @@
 package com.outer.astronomy.application.quantum;
 
-import com.outer.astronomy.domain.entity.quantum.ResultOfSchrodinger;
-import com.outer.astronomy.domain.entity.quantum.SchrodingerEquation;
+import com.outer.astronomy.domain.entity.quantum.schrodinger.ResultOfSchrodinger;
+import com.outer.astronomy.domain.entity.quantum.schrodinger.SchrodingerEquation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SchrodingerEquationController {
 
 
-    @Operation(summary = "Calculate simulation of a quantum particle moving in a one-dimensional potential.", operationId = "calculateQuantumParticleMovingInOneDimensionalPotential.",
+    @Operation(summary = "Calculate simulation of a quantum particle moving in a one-dimensional potential.", operationId = "quantumParticleMovingInOneDimensionalPotential.",
             description = "Simulation of a quantum particle moving in a one-dimensional potential." +
                     "where " +
                     "numSteps (= 1000); Number of time steps (dimensionless)\n" +
@@ -32,16 +32,16 @@ public class SchrodingerEquationController {
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
-    @PostMapping("v1/calculateQuantumParticleMovingInOneDimensionalPotential/{numSteps}/{totalTime}/{gridSize}/{dx}/{x0}/{sigma}/{typeOfV}/{paramOfV}")
-    public ResultOfSchrodinger calculateQuantumParticleMovingInOneDimensionalPotential(@Parameter(description = "Number of time steps (dimensionless)") @PathVariable int numSteps,
-                                                                                       @Parameter(description = "Total simulation time (s)") @PathVariable double totalTime,
-                                                                                       @Parameter(description = "Number of spatial grid points (dimensionless)") @PathVariable int gridSize,
-                                                                                       @Parameter(description = "Spatial grid spacing (m)") @PathVariable double dx,
-                                                                                       @Parameter(description = "Initial position of the particle (m)") @PathVariable double x0,
-                                                                                       @Parameter(description = "Width of the Gaussian wave packet (m)") @PathVariable double sigma,
-                                                                                       @Parameter(description = "1: Infinite Potential / 2 black hole\n" +
+    @PostMapping("v1/quantumParticleMovingInOneDimensionalPotential/{numSteps}/{totalTime}/{gridSize}/{dx}/{x0}/{sigma}/{typeOfV}/{paramOfV}")
+    public ResultOfSchrodinger quantumParticleMovingInOneDimensionalPotential(@Parameter(description = "Number of time steps (dimensionless)") @PathVariable int numSteps,
+                                                                              @Parameter(description = "Total simulation time (s)") @PathVariable double totalTime,
+                                                                              @Parameter(description = "Number of spatial grid points (dimensionless)") @PathVariable int gridSize,
+                                                                              @Parameter(description = "Spatial grid spacing (m)") @PathVariable double dx,
+                                                                              @Parameter(description = "Initial position of the particle (m)") @PathVariable double x0,
+                                                                              @Parameter(description = "Width of the Gaussian wave packet (m)") @PathVariable double sigma,
+                                                                              @Parameter(description = "1: Infinite Potential / 2 black hole\n" +
                                                                                       " using the Schwarzschild potential.", example = "1") @PathVariable int typeOfV,
-                                                                                       @Parameter(description = "Parameters of Potential if necessary (separate by commas) / if 2 : blackhole mass",example = "Infinite") @PathVariable String paramOfV) {
+                                                                              @Parameter(description = "Parameters of Potential if necessary (separate by commas) / if 2 : blackhole mass",example = "Infinite") @PathVariable String paramOfV) {
 
         SchrodingerEquation schrodingerSimulation = new SchrodingerEquation(numSteps,totalTime,gridSize,dx,x0,sigma,typeOfV,paramOfV);
         return schrodingerSimulation.simulate();

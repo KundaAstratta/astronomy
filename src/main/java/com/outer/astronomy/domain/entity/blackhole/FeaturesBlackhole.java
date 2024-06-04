@@ -9,6 +9,7 @@ public record FeaturesBlackhole(double mass, double radius, boolean isTraversabl
         this.eventHorizonArea = eventHorizonArea;
         this.entropy = entropy;
         this.temperature = temperature;
+
     }
 
 }
