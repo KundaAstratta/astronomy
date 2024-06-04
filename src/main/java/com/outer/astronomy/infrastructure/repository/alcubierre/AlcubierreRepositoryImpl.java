@@ -1,4 +1,4 @@
-package com.outer.astronomy.infrastructure.repository;
+package com.outer.astronomy.infrastructure.repository.alcubierre;
 
 import com.outer.astronomy.domain.entity.alcubierre.DataContainer;
 import com.outer.astronomy.domain.repository.alcubierre.AlcubierreRepository;
@@ -19,7 +19,7 @@ public class AlcubierreRepositoryImpl implements AlcubierreRepository {
 
 
     @Override
-    public void save(DataContainer data, String filename) throws  IOException {
+    public void save(DataContainer data, String filename)  {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
 
             writer.write("x,y,z,valeur");

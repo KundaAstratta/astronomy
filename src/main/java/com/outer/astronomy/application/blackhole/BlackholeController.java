@@ -143,7 +143,7 @@ public class BlackholeController {
 
 
 
-    @Operation(summary = "Chandrasekhar limit equation", operationId = "chandrasekharLimit",
+    @Operation(summary = "Chandrasekhar limit equation", operationId = "ChandrasekharLimit",
             description = "Chandrasekhar limit equation calculates the maximum mass M(limit) " +
                     "of a stable white dwarf star, above which it would collapse under its own gravity, leading to a neutron star or black hole. " +
                     "μe is the mean molecular weight per electron and Ms is the solar mass." +

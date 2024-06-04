@@ -7,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class BlackholeTest {
 
     @Test
-    void getSchwarzschildRadius_OK() {
+    void shouldGetSchwarzschildRadius_WithSommGoodValues() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),0,false,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(1336, blackhole.getSchwarzschildRadius(),1);
     }
 
     @Test
-    void getSchwarzschildRadius_Mass_equal_to_zero() {
+    void shouldGetError_WithMassEqualTo0() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,0,false,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
@@ -25,14 +25,14 @@ class BlackholeTest {
     }
 
     @Test
-    void isTraversable_OK() {
+    void shouldIsTraversable_WithGoodValues() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,false,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(blackhole.isTraversable(),true);
     }
 
     @Test
-    void isTraversable_Mass_equals_to_zero () {
+    void shouldGetErrorForTraversableBlackHole_WithMassEqualTo0 () {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,1336,false,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
@@ -43,7 +43,7 @@ class BlackholeTest {
     }
 
     @Test
-    void isTravesable_Radius_equals_to_zero () {
+    void shouldGetErrorForTraversableBlackHole_WithRadiusEqualTo0 () {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),0,false,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
@@ -54,20 +54,20 @@ class BlackholeTest {
     }
 
     @Test
-    void isTooClose_false () {
+    void shouldIsTooCloseReturnFalse () {
         Blackhole blackhole = new Blackhole(null);
         assertEquals(blackhole.isTooClose(100,10,10),false);
     }
 
 
     @Test
-    void isTooClose_true () {
+    void shouldIsToCloseReturnTrue () {
         Blackhole blackhole = new Blackhole(null);
         assertEquals(blackhole.isTooClose(1,10,10),true);
     }
 
     @Test
-    void isTooClose_distance_error() {
+    void shouldIsToCloseReturnError_WithWrongDistance() {
         Blackhole blackhole = new Blackhole(null);
         try {
             blackhole.isTooClose(0,10,10);
@@ -77,7 +77,7 @@ class BlackholeTest {
     }
 
     @Test
-    void isTooClose_radius_error() {
+    void shouldIsToCloseeturnError_WithWrongRadius() {
         Blackhole blackhole = new Blackhole(null);
         try {
             blackhole.isTooClose(100,0,0);
@@ -87,13 +87,13 @@ class BlackholeTest {
     }
 
     @Test
-    void timeToCross_Ok() {
+    void shouldTimeToCross() {
         Blackhole blackhole = new Blackhole(null);
         assertEquals(7.935182117278767*Math.pow(10,20),blackhole.timeToCrossApproachCalculus(10*Math.pow(10,20),20*Math.pow(10,20),1.989*Math.pow(10,30),1.989*Math.pow(10,30)),0.1);
     }
 
     @Test
-    void timeToCross_radius_error() {
+    void shouldTimeToCrossReturnError_WithWrongRadialDistance() {
         Blackhole blackhole = new Blackhole(null);
         try {
             blackhole.timeToCrossApproachCalculus(0,20*Math.pow(10,20),1.989*Math.pow(10,30),1.989*Math.pow(10,30));
@@ -103,7 +103,7 @@ class BlackholeTest {
     }
 
     @Test
-    void timeToCross_distance_error() {
+    void shouldTimeToCrossReturnError_WithWrongDistance() {
         Blackhole blackhole = new Blackhole(null);
         try {
             blackhole.timeToCrossApproachCalculus(10,10,1.989*Math.pow(10,30),1.989*Math.pow(10,30));
@@ -113,7 +113,7 @@ class BlackholeTest {
     }
 
     @Test
-    void timeToCross_mass_error() {
+    void shouldTimeToCrossReturnError_WithWrongMass() {
         Blackhole blackhole = new Blackhole(null);
         try {
             blackhole.timeToCrossApproachCalculus(10,20,0,1.989*Math.pow(10,30));
@@ -123,14 +123,14 @@ class BlackholeTest {
     }
 
     @Test
-    void eventHorizonArea_Ok() {
+    void shouldGetEventHorizonArea() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(blackhole.eventHorizonArea(),5613368,1);
     }
 
     @Test
-    void eventHorizonArea_mass_error() {
+    void shouldEventHorizonAreaReturnError_WithWrongMass() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,1336,true,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
@@ -141,14 +141,14 @@ class BlackholeTest {
     }
 
     @Test
-    void entopy_Ok() {
+    void shouldGetEntopy() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,5613368,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(blackhole.entropy(featuresBlackhole.eventHorizonArea()),1.1804488176510484*Math.pow(10,52),0.1);
     }
 
     @Test
-    void entropy_error_eventHorizonArea() {
+    void shouldEntropyReturnError_WithoutEventHorizonArea() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,0,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
@@ -159,14 +159,14 @@ class BlackholeTest {
     }
 
     @Test
-    void temperature_Ok() {
+    void shouldGetTemperature() {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(9*Math.pow(10,29),1336,true,5613368,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         assertEquals(blackhole.temperature(),8.565382520009469*Math.pow(10,-7),1);
     }
 
     @Test
-    void temperature_error_mass () {
+    void shouldTemperatureError_WithWrongMass () {
         FeaturesBlackhole featuresBlackhole = new FeaturesBlackhole(0,1336,true,5613368,0,0);
         Blackhole blackhole = new Blackhole(featuresBlackhole);
         try {
