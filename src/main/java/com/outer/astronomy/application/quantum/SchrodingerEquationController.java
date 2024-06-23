@@ -1,7 +1,5 @@
 package com.outer.astronomy.application.quantum;
 
-import com.outer.astronomy.domain.entity.quantum.schrodinger.ResultOfSchrodinger;
-import com.outer.astronomy.domain.entity.quantum.schrodinger.SchrodingerEquation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,6 +8,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.outer.astronomy.domain.model.quantum.schrodinger.ResultOfSchrodinger;
+import com.outer.astronomy.domain.model.quantum.schrodinger.SchrodingerEquation;
 
 
 @RestController

@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.quantum.probability;
+package com.outer.astronomy.domain.model.quantum.probability;
 
 import org.apache.commons.math3.complex.Complex;
 

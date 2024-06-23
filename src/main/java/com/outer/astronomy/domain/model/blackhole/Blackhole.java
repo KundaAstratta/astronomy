@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.blackhole;
+package com.outer.astronomy.domain.model.blackhole;
 
 import com.outer.astronomy.domain.utils.Errors;
 

@@ -2,6 +2,9 @@ package com.outer.astronomy.domain.entity.blackhole;
 
 import org.junit.jupiter.api.Test;
 
+import com.outer.astronomy.domain.model.blackhole.Blackhole;
+import com.outer.astronomy.domain.model.blackhole.FeaturesBlackhole;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BlackholeTest {

@@ -2,6 +2,8 @@ package com.outer.astronomy.domain.entity.blackhole;
 
 import org.junit.jupiter.api.Test;
 
+import com.outer.astronomy.domain.model.blackhole.Chandrasekhar;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChandrasekharTest {

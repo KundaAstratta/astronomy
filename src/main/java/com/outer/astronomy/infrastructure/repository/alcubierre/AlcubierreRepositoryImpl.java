@@ -1,6 +1,6 @@
 package com.outer.astronomy.infrastructure.repository.alcubierre;
 
-import com.outer.astronomy.domain.entity.alcubierre.DataContainer;
+import com.outer.astronomy.domain.model.alcubierre.DataContainer;
 import com.outer.astronomy.domain.repository.alcubierre.AlcubierreRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
