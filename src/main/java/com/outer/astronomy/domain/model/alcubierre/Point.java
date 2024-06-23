@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.alcubierre;
+package com.outer.astronomy.domain.model.alcubierre;
 
 public record Point(double x, double y, double z, double t) {}
 

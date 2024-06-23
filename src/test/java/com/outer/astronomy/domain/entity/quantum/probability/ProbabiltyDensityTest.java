@@ -2,6 +2,8 @@ package com.outer.astronomy.domain.entity.quantum.probability;
 
 import org.junit.jupiter.api.Test;
 
+import com.outer.astronomy.domain.model.quantum.probability.ProbabiltyDensity;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

@@ -1,8 +1,8 @@
 package com.outer.astronomy.application.alcubierre;
 
-import com.outer.astronomy.domain.entity.alcubierre.Alcubierre;
-import com.outer.astronomy.domain.entity.alcubierre.DataContainer;
-import com.outer.astronomy.domain.entity.alcubierre.Gridsize;
+import com.outer.astronomy.domain.model.alcubierre.Alcubierre;
+import com.outer.astronomy.domain.model.alcubierre.DataContainer;
+import com.outer.astronomy.domain.model.alcubierre.Gridsize;
 import com.outer.astronomy.domain.service.alcubierre.AlcubierreService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

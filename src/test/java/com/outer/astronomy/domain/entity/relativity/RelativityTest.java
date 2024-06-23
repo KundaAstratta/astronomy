@@ -2,6 +2,9 @@ package com.outer.astronomy.domain.entity.relativity;
 
 import org.junit.jupiter.api.Test;
 
+import com.outer.astronomy.domain.model.relativity.EinsteinTensor;
+import com.outer.astronomy.domain.model.relativity.RiemannTensor;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RelativityTest {
