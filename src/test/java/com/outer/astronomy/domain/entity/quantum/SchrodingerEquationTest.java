@@ -1,7 +1,8 @@
 package com.outer.astronomy.domain.entity.quantum;
 
-import com.outer.astronomy.domain.entity.quantum.schrodinger.SchrodingerEquation;
 import org.junit.jupiter.api.Test;
+
+import com.outer.astronomy.domain.model.quantum.schrodinger.SchrodingerEquation;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.relativity;
+package com.outer.astronomy.domain.model.relativity;
 
 import static com.outer.astronomy.domain.utils.Constants.gravitationalConstant;
 

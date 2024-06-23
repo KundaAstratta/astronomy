@@ -2,6 +2,9 @@ package com.outer.astronomy.domain.entity.alcubierre;
 
 import org.junit.jupiter.api.Test;
 
+import com.outer.astronomy.domain.model.alcubierre.Alcubierre;
+import com.outer.astronomy.domain.model.alcubierre.Gridsize;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlcubierreTest {

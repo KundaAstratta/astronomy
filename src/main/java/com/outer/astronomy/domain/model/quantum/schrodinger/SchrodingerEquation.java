@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.quantum.schrodinger;
+package com.outer.astronomy.domain.model.quantum.schrodinger;
 
 
 import java.util.Arrays;

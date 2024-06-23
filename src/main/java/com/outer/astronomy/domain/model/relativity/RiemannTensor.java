@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.relativity;
+package com.outer.astronomy.domain.model.relativity;
 
 public record RiemannTensor() {
 

@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.blackhole;
+package com.outer.astronomy.domain.model.blackhole;
 
 public record FeaturesBlackhole(double mass, double radius, boolean isTraversable, double eventHorizonArea, double entropy, double temperature) {
     public FeaturesBlackhole(double mass, double radius, boolean isTraversable, double eventHorizonArea , double entropy, double temperature){

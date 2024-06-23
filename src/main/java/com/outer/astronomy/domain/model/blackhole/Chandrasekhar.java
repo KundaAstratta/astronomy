@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.entity.blackhole;
+package com.outer.astronomy.domain.model.blackhole;
 
 import static com.outer.astronomy.domain.utils.Constants.SolarMass;
 

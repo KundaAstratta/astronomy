@@ -1,8 +1,8 @@
 package com.outer.astronomy.domain.repository.alcubierre;
 
-import com.outer.astronomy.domain.entity.alcubierre.DataContainer;
-
 import java.io.IOException;
+
+import com.outer.astronomy.domain.model.alcubierre.DataContainer;
 
 public interface AlcubierreRepository {
 

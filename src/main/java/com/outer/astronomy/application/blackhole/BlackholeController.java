@@ -1,8 +1,5 @@
 package com.outer.astronomy.application.blackhole;
 
-import com.outer.astronomy.domain.entity.blackhole.Blackhole;
-import com.outer.astronomy.domain.entity.blackhole.Chandrasekhar;
-import com.outer.astronomy.domain.entity.blackhole.FeaturesBlackhole;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,6 +7,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.*;
+
+import com.outer.astronomy.domain.model.blackhole.Blackhole;
+import com.outer.astronomy.domain.model.blackhole.Chandrasekhar;
+import com.outer.astronomy.domain.model.blackhole.FeaturesBlackhole;
 
 @RestController
 public class BlackholeController {
