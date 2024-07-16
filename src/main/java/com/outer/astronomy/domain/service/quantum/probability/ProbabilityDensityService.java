@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.service.quantum;
+package com.outer.astronomy.domain.service.quantum.probability;
 
 public interface ProbabilityDensityService {
 

@@ -1,6 +1,6 @@
 package com.outer.astronomy.application.heisenberg;
 
-import com.outer.astronomy.domain.service.heisenberg.NeutronStarQuantumEffectService;
+import com.outer.astronomy.domain.service.quantum.heisenberg.NeutronStarQuantumEffectService;
 import com.outer.astronomy.infrastructure.output.heisenberg.CsvFileWriter;
 
 public class NeutronStarQuantumEffectApplication {

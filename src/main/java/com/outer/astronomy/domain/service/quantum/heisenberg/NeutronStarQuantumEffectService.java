@@ -1,4 +1,4 @@
-package com.outer.astronomy.domain.service.heisenberg;
+package com.outer.astronomy.domain.service.quantum.heisenberg;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
