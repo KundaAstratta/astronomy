@@ -1,6 +1,9 @@
 package com.outer.astronomy.domain.service.heisenberg;
 
 import org.junit.jupiter.api.Test;
+
+import com.outer.astronomy.domain.service.quantum.heisenberg.NeutronStarQuantumEffectService;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NeutronStarQuantumEffectServiceTest {

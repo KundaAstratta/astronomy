@@ -2,7 +2,8 @@ package com.outer.astronomy.application.quantum;
 
 import com.outer.astronomy.domain.model.quantum.probability.ProbabiltyDensity;
 import com.outer.astronomy.domain.model.quantum.schrodinger.SchrodingerEquation;
-import com.outer.astronomy.domain.service.quantum.ProbabilityDensityService;
+import com.outer.astronomy.domain.service.quantum.probability.ProbabilityDensityService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

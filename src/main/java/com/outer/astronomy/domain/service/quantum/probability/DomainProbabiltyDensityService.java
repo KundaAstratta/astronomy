@@ -1,6 +1,7 @@
-package com.outer.astronomy.domain.service.quantum;
+package com.outer.astronomy.domain.service.quantum.probability;
 
 import com.outer.astronomy.domain.repository.quantum.ProbabilityDensityRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
