@@ -39,7 +39,7 @@ public class ProbabilityDensityController {
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
-    @PostMapping("v1/hydrogenElectronProbabilityDensity/{gridSize}/{dx}/{zSlice}/{filename}")
+    @PostMapping("v1/HydrogenElectronProbabilityDensity/{gridSize}/{dx}/{zSlice}/{filename}")
     public void hydrogenElectronProbabilityDensity(@Parameter(description = "Number of spatial grid points (dimensionless)") @PathVariable int gridSize,
                                                    @Parameter(description = "Spatial grid spacing (m)") @PathVariable double dx,
                                                    @Parameter(description = "zSlice , position of layer (dimensionless") @PathVariable int zSlice,
