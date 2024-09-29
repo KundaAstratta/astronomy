@@ -33,7 +33,7 @@ public class SchrodingerEquationController {
             @ApiResponse(responseCode = "400", description = "Functional Error", content = @Content(mediaType ="application/json")),
             @ApiResponse(responseCode = "500", description = "Technical Error", content = @Content(mediaType ="application/json"))
     })
-    @PostMapping("v1/quantumParticleMovingInOneDimensionalPotential/{numSteps}/{totalTime}/{gridSize}/{dx}/{x0}/{sigma}/{typeOfV}/{paramOfV}")
+    @PostMapping("v1/QuantumParticleMovingInOneDimensionalPotential/{numSteps}/{totalTime}/{gridSize}/{dx}/{x0}/{sigma}/{typeOfV}/{paramOfV}")
     public ResultOfSchrodinger quantumParticleMovingInOneDimensionalPotential(@Parameter(description = "Number of time steps (dimensionless)") @PathVariable int numSteps,
                                                                               @Parameter(description = "Total simulation time (s)") @PathVariable double totalTime,
                                                                               @Parameter(description = "Number of spatial grid points (dimensionless)") @PathVariable int gridSize,
